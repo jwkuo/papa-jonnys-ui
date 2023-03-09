@@ -15,8 +15,8 @@
 
 <script setup>
     const runtimeConfig = useRuntimeConfig()
-    const { data: pizzas } = await useLazyFetch(runtimeConfig.public.apiUrl + '/pizzas')
-    const tagline = computed(() => pizzas == null ? 'Loading Pizzas...' : 'Checkout our Pizzas!')
+    const { pending, data: pizzas } = await useLazyFetch(runtimeConfig.public.apiUrl + '/pizzas')
+    const tagline = computed(() => pending ? 'Loading Pizzas...' : 'Checkout our Pizzas!')
 </script>
 
 <style>
